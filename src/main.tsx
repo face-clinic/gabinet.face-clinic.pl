@@ -5,8 +5,7 @@ import './index.css'
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-navigator.wakeLock.request("screen").then(() => console.log('screen wakeLock acquired!'));
+import { KeepAwake } from "react-keep-awake";
 
 ReactDOM.createRoot(document.body as HTMLElement).render(
     <React.StrictMode>
@@ -17,5 +16,6 @@ ReactDOM.createRoot(document.body as HTMLElement).render(
                 </ModalsProvider>
             </QueryClientProvider>
         </MantineProvider>
+        <KeepAwake/>
     </React.StrictMode>,
 )

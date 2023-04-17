@@ -16,7 +16,8 @@
     "@tabler/icons-react": "^2.16.0",
     "@tanstack/react-query": "^4.29.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-keep-awake": "^0.0.4"
   },
   "devDependencies": {
     "@types/dom-screen-wake-lock": "^1.0.1",
