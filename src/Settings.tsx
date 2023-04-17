@@ -24,7 +24,10 @@ export function Settings({ onSubmit }: { onSubmit: (hostname: string) => void })
                         if (value) setHostname(value);
                     }}
                     disabled={roomsQuery.isLoading}
-                    data={roomsQuery.data.map(it => `${it.hostname} (${it.doctor} - ${it.specialization})`)}
+                    data={roomsQuery.data.map(it => ({
+                        value: it.hostname,
+                        label: `${it.hostname} (${it.doctor} - ${it.specialization})`
+                    }))}
                 />
                 <Button size="xl" disabled={!hostname} onClick={() => onSubmit(hostname)}>
                     Zapisz
