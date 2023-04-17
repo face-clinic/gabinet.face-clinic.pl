@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { modals } from "@mantine/modals";
-import { useQuery } from "@tanstack/react-query";
 import { Settings } from "./Settings";
 import { NobodyInTheRoom } from "./NobodyInTheRoom";
 import { RoomInfo } from "./RoomInfo";
-import { Room } from "./Room";
+import { useRooms } from "./hooks.";
 
 function App() {
     const [hostname, setHostname] = useState('');
-    const roomsQuery = useQuery<Room[]>(["rooms"], () => fetch("https://api.face-clinic.pl/rooms").then(response => response.json()), {
+    const roomsQuery = useRooms({
         refetchInterval: 10000,
         enabled: !!hostname
     });
