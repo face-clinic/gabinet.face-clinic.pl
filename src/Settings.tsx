@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Button, Container, Select, Stack, Title } from "@mantine/core";
-import { LocalStorageSettings, Room } from "./App";
+import { Alert, Button, Container, LoadingOverlay, Select, Stack, Title } from "@mantine/core";
+import { useRooms } from "./hooks.";
 
-export function Settings({ onSubmit }: { onSubmit: (hostname: LocalStorageSettings) => void }) {
+export function Settings({ onSubmit }: { onSubmit: (hostname: string) => void }) {
     const [hostname, setHostname] = useState('');
-    const {
-        data,
-        isLoading,
-        isError
-    } = useQuery<Room[]>(["settings"], () => fetch("https://api.face-clinic.pl/rooms").then(response => response.json()));
-    if (isError) return <p>error</p>;
+    const [specialization, setSpecialization] = useState('Ortodoncja');
+    const roomsQuery = useRooms({
+        onSuccess: (data) => {
+            setHostname(data[0].hostname)
+        }
+    });
+    if (roomsQuery.isLoading) return <LoadingOverlay visible/>;
+    if (roomsQuery.error || !roomsQuery.data) return (<Alert title="Bummer!" color="red">Error!</Alert>);
     return (
         <Container sx={(theme) => ({ padding: theme.spacing.lg, height: '100%' })}>
             <Stack justify="space-between">
                 <Title>Ustawienia</Title>
                 <Select
+                    maxDropdownHeight={500}
                     size="xl"
                     value={hostname}
                     onChange={value => {
                         if (value) setHostname(value);
                     }}
-                    disabled={isLoading}
-                    data={(data || []).map(it => it.hostname)}
-                    label="Wybierz gabinet"
+                    disabled={roomsQuery.isLoading}
+                    data={roomsQuery.data.map(it => it.hostname)}
                 />
-                <Button size="xl" disabled={isLoading} onClick={() => onSubmit({ hostname: hostname })}>
+                <Button size="xl" disabled={!hostname} onClick={() => onSubmit(hostname)}>
                     Zapisz
                 </Button>
             </Stack>
