@@ -4,7 +4,6 @@ import {useRooms} from "./hooks.";
 
 export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
     const [hostname, setHostname] = useState('');
-    const [specialization, setSpecialization] = useState('Ortodoncja');
     const roomsQuery = useRooms({
         onSuccess: (data) => {
             if (data.length > 0) setHostname(data[0].hostname)
