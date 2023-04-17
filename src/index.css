@@ -7,6 +7,10 @@
     url('/Museo-Sans-Rounded-500.woff') format('woff');
 }
 
+* {
+    user-select: none;
+}
+
 :root {
     --primary-color: red;
 }
