@@ -27,7 +27,7 @@ export function RoomInfo({ handleSettings, room }: { handleSettings: () => void,
                 </div>
             </main>
             <footer className="p-8 bg-primary">
-                <h1 className="pt-7 text-6xl text-museo">
+                <h1 className="pt-6 text-6xl text-museo">
                     Dr. {room.doctor}
                 </h1>
             </footer>
