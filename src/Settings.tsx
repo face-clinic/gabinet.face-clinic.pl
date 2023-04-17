@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Container, LoadingOverlay, Select, Stack, Title } from "@mantine/core";
+import { Alert, Button, Container, Divider, LoadingOverlay, Select, Stack, Title } from "@mantine/core";
 import { useRooms } from "./hooks.";
 
 export function Settings({ onSubmit }: { onSubmit: (hostname: string) => void }) {
@@ -29,8 +29,12 @@ export function Settings({ onSubmit }: { onSubmit: (hostname: string) => void })
                         label: `${it.hostname} (${it.doctor} - ${it.specialization})`
                     }))}
                 />
-                <Button size="xl" disabled={!hostname} onClick={() => onSubmit(hostname)}>
+                <Button size="xl" variant="gradient" disabled={!hostname} onClick={() => onSubmit(hostname)}>
                     Zapisz
+                </Button>
+                <Divider/>
+                <Button variant="outline" size="xl" onClick={() => window.location.reload()}>
+                    Odśwież
                 </Button>
             </Stack>
         </Container>
