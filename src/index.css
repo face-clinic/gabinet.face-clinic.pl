@@ -1,0 +1,69 @@
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Museo-Sans-Rounded';
+    src: url('/Museo-Sans-Rounded-500.woff2') format('woff2'),
+    url('/Museo-Sans-Rounded-500.woff') format('woff');
+}
+
+:root {
+    --primary-color: red;
+}
+
+html, body, #root {
+    height: 100%
+}
+
+.text-museo {
+    font-family: Museo-Sans-Rounded, serif;
+}
+
+.text-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+.text-size-200 {
+    font-size: 20vw;
+}
+
+.text-size-vw {
+    font-size: 95vw;
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.clock-background::before {
+    content: '';
+    display: block;
+    background: var(--primary-color);
+    position: absolute;
+    top: 0;
+    height: 50%;
+    z-index: -100;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    border-bottom: solid black 5px;
+}
+
+
+.clock-background::after {
+    content: '';
+    display: block;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    z-index: -100;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    border-top: solid black 5px;
+}
