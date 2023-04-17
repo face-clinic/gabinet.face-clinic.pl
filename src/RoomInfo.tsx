@@ -40,7 +40,7 @@ function getSpecializationColor(specialization: string) {
         case 'Stomatologia': {
             return colors.red["500"];
         }
-        case 'Chirurgia': {
+        case 'Implantologia': {
             return colors.green["500"];
         }
         case 'Ortodoncja': {
