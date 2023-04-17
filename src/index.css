@@ -50,8 +50,8 @@ html, body, #root {
     height: 50%;
     z-index: -100;
     width: 100%;
-    border-radius: 10px 10px 0 0;
-    border-bottom: solid black 5px;
+    border-radius: 20px 20px 0 0;
+    border-bottom: solid black 8px;
 }
 
 
@@ -64,6 +64,6 @@ html, body, #root {
     height: 50%;
     z-index: -100;
     width: 100%;
-    border-radius: 0 0 10px 10px;
-    border-top: solid black 5px;
+    border-radius: 0 0 20px 20px;
+    border-top: solid black 8px;
 }
