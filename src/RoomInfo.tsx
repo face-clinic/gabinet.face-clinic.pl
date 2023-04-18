@@ -1,10 +1,10 @@
-import { UnstyledButton } from "@mantine/core";
-import { IconSettings } from "@tabler/icons-react";
-import React, { useEffect } from "react";
-import { Room } from "./Room";
-import colors from "tailwindcss/colors";
+import {UnstyledButton} from "@mantine/core";
+import {IconSettings} from "@tabler/icons-react";
+import React, {useEffect} from "react";
+import {Room} from "./Room";
+import {getSpecializationColor} from "./specialization-color";
 
-export function RoomInfo({ handleSettings, room }: { handleSettings: () => void, room: Room }) {
+export function RoomInfo({handleSettings, room}: { handleSettings: () => void, room: Room }) {
     const color = getSpecializationColor(room.specialization);
     useEffect(() => {
         const element = document.querySelector(':root') as HTMLElement;
@@ -37,27 +37,3 @@ export function RoomInfo({ handleSettings, room }: { handleSettings: () => void,
     );
 }
 
-function getSpecializationColor(specialization: string) {
-    switch (specialization) {
-        case 'Stomatologia': {
-            return colors.red["500"];
-        }
-        case 'Implantologia': {
-            return colors.green["500"];
-        }
-        case 'Ortodoncja': {
-            return colors.pink["500"];
-        }
-        case 'Protetyka': {
-            return colors.blue["500"];
-        }
-        case 'Periodontologia': {
-            return colors.violet["500"];
-        }
-        case 'Rehabilitacja': {
-            return colors.orange["500"];
-        }
-        default:
-            return colors.red["500"];
-    }
-}

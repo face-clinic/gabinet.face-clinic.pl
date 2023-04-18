@@ -1,6 +1,7 @@
-import React, {useState} from "react";
-import {Alert, Button, Container, Divider, LoadingOverlay, Select, Stack, Title} from "@mantine/core";
+import React, {forwardRef, useState} from "react";
+import {Alert, Button, Container, Divider, Group, LoadingOverlay, Select, Stack, Text, Title} from "@mantine/core";
 import {useRooms} from "./hooks.";
+import {getSpecializationColor} from "./specialization-color";
 
 export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
     const [hostname, setHostname] = useState('');
@@ -23,10 +24,13 @@ export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
                     onChange={value => {
                         if (value) setHostname(value);
                     }}
+                    itemComponent={SelectItem}
                     disabled={roomsQuery.isLoading}
                     data={roomsQuery.data.map(it => ({
                         value: it.hostname,
-                        label: `${it.hostname} (${it.doctor} - ${it.specialization})`
+                        label: it.hostname,
+                        description: `${it.doctor} - ${it.specialization}`,
+                        color: getSpecializationColor(it.specialization)
                     }))}
                 />
                 <Button size="xl" variant="gradient" disabled={!hostname} onClick={() => onSubmit(hostname)}>
@@ -40,3 +44,26 @@ export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
         </Container>
     );
 }
+
+interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {
+    image: string;
+    label: string;
+    description: string;
+    color: string;
+}
+
+const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
+    ({image, label, description, color, ...others}: ItemProps, ref) => (
+        <div ref={ref} {...others}>
+            <Group noWrap>
+                <div style={{backgroundColor: color, display: 'block', width: 16, height: 16, borderRadius: '50%', border: '1px solid black'}}/>
+                <div>
+                    <Text size="sm">{label}</Text>
+                    <Text size="xs" opacity={0.65}>
+                        {description}
+                    </Text>
+                </div>
+            </Group>
+        </div>
+    )
+);
