@@ -23,7 +23,9 @@ export function RoomInfo({ handleSettings, room }: { handleSettings: () => void,
             <main className="flex-grow bg-black">
                 <div className="h-full flex flex-row">
                     <p className="m-9 text-museo text-primary text-vertical text-6xl text-size-200 text-center">GABINET</p>
-                    <p className="m-9 text-museo text-black flex-grow text-6xl text-size-vw text-center clock-background relative z-10">{room.hostname.replaceAll(/[A-Z-]+/gm, "")}</p>
+                    <p className="m-9 text-museo text-black flex-grow text-6xl text-size-vw text-center clock-background relative z-10">
+                        {room.hostname.split('-')[0].replaceAll(/[A-Z-]+/gm, "")}
+                    </p>
                 </div>
             </main>
             <footer className="p-8 bg-primary">
