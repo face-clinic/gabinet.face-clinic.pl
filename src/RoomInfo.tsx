@@ -7,7 +7,7 @@ import colors from "tailwindcss/colors";
 export function RoomInfo({ handleSettings, room }: { handleSettings: () => void, room: Room }) {
     const color = getSpecializationColor(room.specialization);
     useEffect(() => {
-        let element = document.querySelector(':root') as HTMLElement;
+        const element = document.querySelector(':root') as HTMLElement;
         element?.style.setProperty('--primary-color', color);
     }, [color])
     return (

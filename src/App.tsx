@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { modals } from "@mantine/modals";
-import { Settings } from "./Settings";
-import { NobodyInTheRoom } from "./NobodyInTheRoom";
-import { RoomInfo } from "./RoomInfo";
-import { useRooms } from "./hooks.";
+import React, {useState} from "react";
+import {modals} from "@mantine/modals";
+import {Settings} from "./Settings";
+import {NobodyInTheRoom} from "./NobodyInTheRoom";
+import {RoomInfo} from "./RoomInfo";
+import {useRooms} from "./hooks.";
 
 function App() {
     const [hostname, setHostname] = useState('');
     const roomsQuery = useRooms({
         refetchInterval: 10000,
-        enabled: !!hostname
+        enabled: !!hostname,
+        retry: Infinity,
     });
 
     if (!hostname) return (
@@ -17,10 +18,8 @@ function App() {
     );
 
     if (roomsQuery.isLoading) return null;
-    if (!roomsQuery.data) return <p>error</p>;
 
-
-    const selectedRoom = roomsQuery.data.find(it => it.hostname === hostname);
+    const selectedRoom = (roomsQuery.data || []).find(it => it.hostname === hostname);
     if (!selectedRoom) return <NobodyInTheRoom setValue={setHostname}/>;
 
     return (
