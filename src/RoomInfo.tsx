@@ -30,7 +30,7 @@ export function RoomInfo({handleSettings, room}: { handleSettings: () => void, r
             </main>
             <footer className="p-8 bg-primary">
                 <h1 className="pt-6 text-6xl text-museo">
-                    Dr. {room.doctor}
+                    Dr {room.doctor}
                 </h1>
             </footer>
         </div>
