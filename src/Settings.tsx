@@ -3,6 +3,10 @@ import {Alert, Button, Container, Divider, Group, LoadingOverlay, Select, Stack,
 import {useRooms} from "./hooks.";
 import {getSpecializationColor} from "./specialization-color";
 
+export interface UserSettings {
+    hostname?: string;
+}
+
 export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
     const [hostname, setHostname] = useState('');
     const roomsQuery = useRooms({
@@ -56,7 +60,14 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
     ({image, label, description, color, ...others}: ItemProps, ref) => (
         <div ref={ref} {...others}>
             <Group noWrap>
-                <div style={{backgroundColor: color, display: 'block', width: 16, height: 16, borderRadius: '50%', border: '1px solid black'}}/>
+                <div style={{
+                    backgroundColor: color,
+                    display: 'block',
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    border: '1px solid black'
+                }}/>
                 <div>
                     <Text size="sm">{label}</Text>
                     <Text size="xs" opacity={0.65}>

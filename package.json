@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@bgalek/react-contexts": "^0.0.4",
     "@emotion/react": "^11.10.6",
     "@mantine/core": "^6.0.7",
     "@mantine/hooks": "^6.0.7",

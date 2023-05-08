@@ -2,15 +2,15 @@ import colors from "tailwindcss/colors";
 
 export function getSpecializationColor(specialization: string) {
     switch (specialization) {
-        case 'Stomatologia': {
-            return colors.red['300'];
-        }
+        // case 'Stomatologia': {
+        //     return colors.red['300'];
+        // }
         // case 'Implantologia': {
         //     return colors.green["300"];
         // }
-        case 'Ortodoncja': {
-            return colors.white;
-        }
+        // case 'Ortodoncja': {
+        //     return colors.white;
+        // }
         // case 'Protetyka': {
         //     return colors.blue["300"];
         // }
