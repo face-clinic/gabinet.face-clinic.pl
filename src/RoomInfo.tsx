@@ -4,6 +4,11 @@ import React, {useEffect} from "react";
 import {Room} from "./Room";
 import {getSpecializationColor} from "./specialization-color";
 
+function renderRoomNumber(specialization: string, room: Room) {
+    if (specialization === 'Gabinet higieny') return 'H';
+    return room.hostname.split('-')[0].replaceAll(/[A-Z-]+/gm, "");
+}
+
 export function RoomInfo({handleSettings, room}: { handleSettings: () => void, room: Room }) {
     const color = getSpecializationColor(room.specialization);
     useEffect(() => {
@@ -24,7 +29,7 @@ export function RoomInfo({handleSettings, room}: { handleSettings: () => void, r
                 <div className="h-full flex flex-row">
                     <p className="m-9 text-museo text-primary text-vertical text-6xl text-size-200 text-center">GABINET</p>
                     <p className="m-9 text-museo text-black flex-grow text-6xl text-size-vw text-center clock-background relative z-10">
-                        {room.hostname.split('-')[0].replaceAll(/[A-Z-]+/gm, "")}
+                        {renderRoomNumber(room.specialization, room)}
                     </p>
                 </div>
             </main>

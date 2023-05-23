@@ -25,7 +25,6 @@ export function NobodyInTheRoom({ setValue }: { setValue: (hostname: string) => 
                 </UnstyledButton>
             </header>
             <main className="flex-grow bg-black">
-                <p className="text-white text-museo text-6xl text-center m-0 p-0" style={{ fontSize: "80vh" }}>X</p>
             </main>
         </div>
     );
