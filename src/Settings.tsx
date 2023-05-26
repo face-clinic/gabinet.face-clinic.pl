@@ -44,6 +44,7 @@ export function Settings({onSubmit}: { onSubmit: (hostname: string) => void }) {
                 <Button variant="outline" size="xl" onClick={() => window.location.reload()}>
                     Odśwież
                 </Button>
+                <Text>wersja: 1.0.1</Text>
             </Stack>
         </Container>
     );
