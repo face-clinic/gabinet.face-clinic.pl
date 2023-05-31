@@ -9,7 +9,7 @@ export function NobodyInTheRoom({ setValue }: { setValue: (hostname: string) => 
         <div className="h-full static flex flex-col">
             <header className="p-8 flex items-center">
                 <h1 className="text-6xl text-museo flex-grow">
-                    Pusty gabinet
+                    Wolny gabinet
                 </h1>
                 <UnstyledButton onClick={() => {
                     modals.open({
