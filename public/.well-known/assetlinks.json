@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "pl.face_clinic.gabinet.twa",
+        "sha256_cert_fingerprints": ["58:98:AF:57:88:6A:90:40:F8:D8:2D:7F:6F:B3:66:24:CB:E0:EB:8A:22:E5:82:08:1F:2A:3E:1A:34:27:86:75"]
+      }
+    }]
